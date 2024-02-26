@@ -4,6 +4,8 @@ import Datacard from './DataCard'
 function Display ({currentDC, setCurrentDC}) {
     const [data, setData] = useState([]);
 
+    console.log("currentDC: ", currentDC);
+
     useEffect(() => {
         //define function to fetch all datacards
         const fetchData = async () => {
@@ -38,6 +40,9 @@ function Display ({currentDC, setCurrentDC}) {
                 ))}
             </div>
             )
+    }
+    else if (currentDC === 'midpost') {
+        return <h1>WE ARE MID POST</h1>
     }
     else {
         return (

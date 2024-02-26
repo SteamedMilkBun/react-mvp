@@ -5,15 +5,51 @@ function Navbar ({setCurrentDC}) {
         setCurrentDC({});
     }
 
+    const handlePostClick = () => {
+        setCurrentDC('midpost');//trigger Display rerender while loading results of post request
+
+        const inputTitle = document.getElementById('input-title').value;
+        const inputDesc = document.getElementById('input-desc').value;
+        const url = 'http://localhost:8000/datacards';
+        const dataToSend = {
+            dc_title: inputTitle,
+            dc_desc: inputDesc
+        };
+        console.log(dataToSend);
+
+        const options = {//define options for POST request
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }, //set content type to JSON
+            body: JSON.stringify(dataToSend) // Convert the data object to JSON string,
+        };
+        //make POST request via fetch to server
+        fetch(url, options)
+        .then((response) => {
+            return response.json();//convert json response into js object we can use
+        })
+        .then((data) => {//take the resulting js data (object) and
+            //handle that js data
+            console.log("successfully posted: ", data);
+        })
+        .catch((err) => {//catch fetch errors
+            console.error(err);
+        })
+        //update state to reflect posted data
+        setCurrentDC({});//display all with new posted data included
+    }
+
     return (
         <div>
             <h3>Navbar</h3>
             <div className='post'>
-                <input placeholder='input field for post'></input>
-                <button>post</button>
+                <input id='input-title' placeholder='title'></input>
+                <input id='input-desc' placeholder='desc'></input>
+                <button className='btn' onClick={handlePostClick}>post</button>
             </div>
             
-            <button onClick={handleClick}>display all datacards</button>
+            <button className='btn' onClick={handleClick}>display all datacards</button>
         </div>
     )
 }
