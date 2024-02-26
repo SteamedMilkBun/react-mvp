@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Datacard from './DataCard'
 
-function Display ({displayAll, setDisplayAll, currentDC, setCurrentDC}) {
+function Display ({currentDC, setCurrentDC}) {
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -23,7 +23,7 @@ function Display ({displayAll, setDisplayAll, currentDC, setCurrentDC}) {
         fetchData();
     }, []);
 
-    if(displayAll){
+    if(Object.keys(currentDC).length === 0){
         return (
             <div>
                 <h3>Display all</h3>
@@ -32,9 +32,6 @@ function Display ({displayAll, setDisplayAll, currentDC, setCurrentDC}) {
                         dc={element}
                         key={element.dc_id}
                         title={element.dc_title}
-                        desc={element.dc_desc}
-                        displayAll={displayAll}
-                        setDisplayAll={setDisplayAll}
                         currentDC={currentDC}
                         setCurrentDC={setCurrentDC}
                     />

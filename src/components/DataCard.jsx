@@ -1,11 +1,10 @@
 import { useState } from 'react'
 
-function Datacard({ displayAll, setDisplayAll, currentDC, setCurrentDC, dc, title, desc }) {
+function Datacard({ setCurrentDC, dc, title }) {
     console.log(dc);
 
     const handleClick = () => {
         setCurrentDC(dc);
-        setDisplayAll(!displayAll);
     }
 
     return (

@@ -1,9 +1,8 @@
 import { useState } from 'react'
 
-function Navbar ({setDisplayAll, setCurrentDC}) {
+function Navbar ({setCurrentDC}) {
     const handleClick = () => {
         setCurrentDC({});
-        setDisplayAll(true);
     }
 
     return (
