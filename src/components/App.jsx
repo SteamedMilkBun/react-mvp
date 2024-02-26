@@ -5,15 +5,21 @@ import Display from './Display'
 import Datacard from './DataCard'
 
 function App() {
-  const [display, setDisplay] = useState('display all');
+  const [displayAll, setDisplayAll] = useState(true);
+  const [currentDC, setCurrentDC] = useState({})
 
   return (
     <>
       <h1>app.jsx</h1>
-      <Navbar />
+      <Navbar 
+        setDisplayAll={setDisplayAll}
+        setCurrentDC={setCurrentDC}
+      />
       <Display 
-        display={display}
-        setDisplay={setDisplay}
+        displayAll={displayAll}
+        setDisplayAll={setDisplayAll}
+        currentDC={currentDC}
+        setCurrentDC={setCurrentDC}
       />
     </>
   )

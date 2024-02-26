@@ -1,6 +1,11 @@
 import { useState } from 'react'
 
-function Navbar () {
+function Navbar ({setDisplayAll, setCurrentDC}) {
+    const handleClick = () => {
+        setCurrentDC({});
+        setDisplayAll(true);
+    }
+
     return (
         <div>
             <h3>Navbar</h3>
@@ -9,7 +14,7 @@ function Navbar () {
                 <button>post</button>
             </div>
             
-            <button>display all datacards</button>
+            <button onClick={handleClick}>display all datacards</button>
         </div>
     )
 }
