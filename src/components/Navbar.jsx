@@ -11,7 +11,7 @@ function Navbar ({currentDC, setCurrentDC}) {
 
         const inputTitle = document.getElementById('input-title').value;
         const inputDesc = document.getElementById('input-desc').value;
-        const url = 'https://react-mvp-ec68.onrender.com/datacard';
+        const url = 'https://react-mvp-ec68.onrender.com/datacards';
         const dataToSend = {
             dc_title: inputTitle,
             dc_desc: inputDesc
