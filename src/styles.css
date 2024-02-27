@@ -40,7 +40,7 @@
   height: 35px;
   width: 150px;
   margin: .6em;
-  transform: rotate(-7deg) translateX(4em) translateY(-.7em);
+  transform: rotate(-7deg) translateX(4em) translateY(-.5em);
 }
 
 @keyframes component-spin {
