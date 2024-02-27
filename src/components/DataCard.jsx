@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function Datacard({ currentDC, setCurrentDC, dc, title }) {
+function Datacard({ setCurrentDC, dc, title }) {
     //console.log(dc);
 
     const handleClick = () => {

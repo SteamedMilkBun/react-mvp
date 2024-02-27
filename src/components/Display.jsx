@@ -1,21 +1,16 @@
 import { useEffect, useState } from 'react'
 import Datacard from './DataCard'
 
-function Display ({currentDC, setCurrentDC}) {
+function Display ({ currentDC, setCurrentDC }) {
     const [data, setData] = useState([]);
-
-    //console.log("currentDC: ", currentDC);
+    const [patchData, setPatchData] = useState({ dc_title: '', dc_desc: '' });
 
     useEffect(() => {
-        //define function to fetch all datacards
         const fetchData = async () => {
             try {
                 const res = await fetch(`http://localhost:8000/datacards`);
-
-                // Parse the JSON response
                 const data = await res.json();
-                // Update state with fetched data
-                setData(data);//data becomes jsonData, which is an array of objects
+                setData(data);
             }
             catch (error) {
                 console.error('Error fetching data:', error);
@@ -28,7 +23,7 @@ function Display ({currentDC, setCurrentDC}) {
         setCurrentDC('loading');
         const id = currentDC.dc_id;
         const url = `http://localhost:8000/datacards/${id}`;
-        const options = {//define options for DELETE request
+        const options = {
             method: 'DELETE',
         };
         
@@ -42,7 +37,34 @@ function Display ({currentDC, setCurrentDC}) {
         })
     };
 
-    if(Object.keys(currentDC).length === 0){
+    const handlePatchClick = () => {
+        const url = `http://localhost:8000/datacards/${currentDC.dc_id}`;
+        const options = {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(patchData)
+        };
+        
+        fetch(url, options)
+        .then(res => res.json())
+        .then((data) => {
+            console.log("successfully patched: ", data);
+            setCurrentDC({});
+        })
+        .catch(err => console.error(err))
+    }
+
+    const handleInputChange = (e) => {
+        const { id, value } = e.target;
+        setPatchData(prevData => ({
+            ...prevData,
+            [id]: value
+        }));
+    };
+
+    if (Object.keys(currentDC).length === 0) {
         return (
             <div>
                 <h3>Display all</h3>
@@ -56,23 +78,20 @@ function Display ({currentDC, setCurrentDC}) {
                     />
                 ))}
             </div>
-            )
-    }
-    else if (currentDC === 'loading') {
+        )
+    } else if (currentDC === 'loading') {
         return <h1>LOADING</h1>
-    }
-    else {
+    } else {
         return (
             <>
                 <h3>Display Card: {currentDC.dc_id}</h3>
-                <p>{currentDC.dc_title}</p>
-                <p>{currentDC.dc_desc}</p>
+                <input id='dc_title' placeholder={currentDC.dc_title} value={patchData.title} onChange={handleInputChange}></input>
+                <input id='dc_desc' placeholder={currentDC.dc_desc} value={patchData.desc} onChange={handleInputChange}></input>
+                <button id='patch' onClick={handlePatchClick}>Patch</button>
                 <button id='delete' onClick={handleDeleteClick}>Delete</button>
             </>
         )
-    }
-        
-    
+    } 
 }
 
 export default Display

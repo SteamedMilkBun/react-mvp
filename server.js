@@ -71,6 +71,8 @@ app.patch('/datacards/:id', (req, res) => {
     const dc_title = req.body.dc_title;
     const dc_desc = req.body.dc_desc;
 
+    console.log(dc_title, dc_desc);
+
     pool.query(`UPDATE datacards SET 
                 dc_title = COALESCE($1, dc_title),
                 dc_desc = COALESCE($2, dc_desc) WHERE
