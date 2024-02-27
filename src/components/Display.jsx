@@ -4,7 +4,7 @@ import Datacard from './DataCard'
 function Display ({currentDC, setCurrentDC}) {
     const [data, setData] = useState([]);
 
-    console.log("currentDC: ", currentDC);
+    //console.log("currentDC: ", currentDC);
 
     useEffect(() => {
         //define function to fetch all datacards
@@ -14,7 +14,6 @@ function Display ({currentDC, setCurrentDC}) {
 
                 // Parse the JSON response
                 const data = await res.json();
-                console.log(data);
                 // Update state with fetched data
                 setData(data);//data becomes jsonData, which is an array of objects
             }
@@ -24,6 +23,24 @@ function Display ({currentDC, setCurrentDC}) {
         }
         fetchData();
     }, [currentDC]);
+
+    const handleDeleteClick = () => {
+        setCurrentDC('loading');
+        const id = currentDC.dc_id;
+        const url = `http://localhost:8000/datacards/${id}`;
+        const options = {//define options for DELETE request
+            method: 'DELETE',
+        };
+        
+        fetch(url, options)       
+        .then(() => {
+            console.log("successful delete");
+            setCurrentDC({});
+        })
+        .catch((err) => {
+            console.error(err);
+        })
+    };
 
     if(Object.keys(currentDC).length === 0){
         return (
@@ -50,6 +67,7 @@ function Display ({currentDC, setCurrentDC}) {
                 <h3>Display Card: {currentDC.dc_id}</h3>
                 <p>{currentDC.dc_title}</p>
                 <p>{currentDC.dc_desc}</p>
+                <button id='delete' onClick={handleDeleteClick}>Delete</button>
             </>
         )
     }

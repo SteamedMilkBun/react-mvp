@@ -40,10 +40,6 @@ function Navbar ({currentDC, setCurrentDC}) {
         })
     }
 
-    useEffect(() => {
-        console.log("after fetch", currentDC);
-    }, [currentDC]); // Log currentDC whenever it changes
-
     return (
         <div>
             <h3>Navbar</h3>
