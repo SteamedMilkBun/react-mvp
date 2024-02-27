@@ -8,7 +8,7 @@ function Display ({ currentDC, setCurrentDC }) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch(`http://localhost:8000/datacards`);
+                const res = await fetch(`https://react-mvp-ec68.onrender.com/datacards`);
                 const data = await res.json();
                 setData(data);
             }
@@ -22,7 +22,7 @@ function Display ({ currentDC, setCurrentDC }) {
     const handleDeleteClick = () => {
         setCurrentDC('loading');
         const id = currentDC.dc_id;
-        const url = `http://localhost:8000/datacards/${id}`;
+        const url = `https://react-mvp-ec68.onrender.com/datacards/${id}`;
         const options = {
             method: 'DELETE',
         };
@@ -38,7 +38,7 @@ function Display ({ currentDC, setCurrentDC }) {
     };
 
     const handlePatchClick = () => {
-        const url = `http://localhost:8000/datacards/${currentDC.dc_id}`;
+        const url = `https://react-mvp-ec68.onrender.com/datacards/${currentDC.dc_id}`;
         const options = {
             method: 'PATCH',
             headers: {
