@@ -13,7 +13,7 @@ function Navbar ({currentDC, setCurrentDC}) {
         const inputDesc = document.getElementById('input-desc').value;
         const url = 'https://react-mvp-ec68.onrender.com/datacards';
 
-        if (inputTitle === '') {
+        if (typeof inputTitle === "string" && inputTitle.trim().length === 0) {
             alert('Title is empty')
             setCurrentDC({});
         } else {
