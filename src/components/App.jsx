@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-      <h1>app.jsx</h1>
+      <h1>aMazin</h1>
       <Navbar 
         currentDC={currentDC}
         setCurrentDC={setCurrentDC}
