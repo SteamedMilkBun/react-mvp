@@ -8,12 +8,12 @@ dotenv.config();
 const PORT = process.env.PORT || 8000;
 
 const pool = new pg.Pool({
-    connectionString: process.env.LOCAL_DB_URL
+    connectionString: process.env.INT_DB_URL
 })
 
 pool.connect()
     .then((client) => {
-        console.log(`Connected to postgres using connection string ${process.env.LOCAL_DB_URL}`);
+        console.log(`Connected to postgres using connection string ${process.env.INT_DB_URL}`);
         client.release();
     })
     .catch((err)=>{
