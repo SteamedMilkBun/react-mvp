@@ -15,7 +15,7 @@ function Navbar ({currentDC, setCurrentDC}) {
 
         if (inputTitle === '') {
             alert('Title is empty')
-            return;
+            setCurrentDC({});
         } else {
             const dataToSend = {
                 dc_title: inputTitle,
