@@ -34,8 +34,6 @@ function Navbar ({currentDC, setCurrentDC}) {
             //handle that js data
             console.log("successfully posted: ", data);
             setCurrentDC({});//set currentDC back to empty to rerender display all with posted data
-            inputTitle = '';
-            inputDesc = '';
         })
         .catch((err) => {//catch fetch errors
             console.error(err);
