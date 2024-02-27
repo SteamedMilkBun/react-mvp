@@ -1,12 +1,13 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-function Navbar ({setCurrentDC}) {
+function Navbar ({currentDC, setCurrentDC}) {
     const handleClick = () => {
         setCurrentDC({});
     }
 
     const handlePostClick = () => {
-        setCurrentDC('midpost');//trigger Display rerender while loading results of post request
+        setCurrentDC('loading');//trigger Display rerender while loading results of post request
+        console.log("before fetch", currentDC)
 
         const inputTitle = document.getElementById('input-title').value;
         const inputDesc = document.getElementById('input-desc').value;
@@ -32,13 +33,16 @@ function Navbar ({setCurrentDC}) {
         .then((data) => {//take the resulting js data (object) and
             //handle that js data
             console.log("successfully posted: ", data);
+            setCurrentDC({});//set currentDC back to empty to rerender display all with posted data
         })
         .catch((err) => {//catch fetch errors
             console.error(err);
         })
-        //update state to reflect posted data
-        setCurrentDC({});//display all with new posted data included
     }
+
+    useEffect(() => {
+        console.log("after fetch", currentDC);
+    }, [currentDC]); // Log currentDC whenever it changes
 
     return (
         <div>

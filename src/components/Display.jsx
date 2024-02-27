@@ -23,7 +23,7 @@ function Display ({currentDC, setCurrentDC}) {
             }
         }
         fetchData();
-    }, []);
+    }, [currentDC]);
 
     if(Object.keys(currentDC).length === 0){
         return (
@@ -41,8 +41,8 @@ function Display ({currentDC, setCurrentDC}) {
             </div>
             )
     }
-    else if (currentDC === 'midpost') {
-        return <h1>WE ARE MID POST</h1>
+    else if (currentDC === 'loading') {
+        return <h1>LOADING</h1>
     }
     else {
         return (

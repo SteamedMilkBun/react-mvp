@@ -11,6 +11,7 @@ function App() {
     <>
       <h1>app.jsx</h1>
       <Navbar 
+        currentDC={currentDC}
         setCurrentDC={setCurrentDC}
       />
       <Display 
