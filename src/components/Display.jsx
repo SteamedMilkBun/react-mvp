@@ -3,7 +3,7 @@ import Datacard from './DataCard'
 
 function Display ({ currentDC, setCurrentDC }) {
     const [data, setData] = useState([]);
-    const [patchData, setPatchData] = useState({ dc_title: '', dc_desc: '' });
+    const [patchData, setPatchData] = useState({});
 
     useEffect(() => {
         const fetchData = async () => {
@@ -52,6 +52,7 @@ function Display ({ currentDC, setCurrentDC }) {
         .then((data) => {
             console.log("successfully patched: ", data);
             setCurrentDC({});
+            setPatchData({});
         })
         .catch(err => console.error(err))
     }
@@ -64,10 +65,14 @@ function Display ({ currentDC, setCurrentDC }) {
         }));
     };
 
+    useEffect(() => {
+        console.log('currentDC, ran on every currentDC change: ', currentDC);
+    }, [currentDC]);
+
     if (Object.keys(currentDC).length === 0) {
         return (
-            <div>
-                <h3>Display all</h3>
+            <div className='box'>
+                <h3>Result of Get All</h3>
                 {data.map((element) => (
                     <Datacard
                         dc={element}
@@ -83,13 +88,13 @@ function Display ({ currentDC, setCurrentDC }) {
         return <h1>LOADING</h1>
     } else {
         return (
-            <>
-                <h3>Display Card: {currentDC.dc_id}</h3>
-                <input id='dc_title' placeholder={currentDC.dc_title} value={patchData.title} onChange={handleInputChange}></input>
-                <input id='dc_desc' placeholder={currentDC.dc_desc} value={patchData.desc} onChange={handleInputChange}></input>
+            <div className='box'>
+                <h3>Patch or Delete</h3>
+                <input id='dc_title' placeholder={currentDC.dc_title} value={patchData.dc_title} onChange={handleInputChange}></input>
+                <input id='dc_desc' placeholder={currentDC.dc_desc} value={patchData.dc_desc} onChange={handleInputChange}></input>
                 <button id='patch' onClick={handlePatchClick}>Patch</button>
                 <button id='delete' onClick={handleDeleteClick}>Delete</button>
-            </>
+            </div>
         )
     } 
 }

@@ -41,15 +41,14 @@ function Navbar ({currentDC, setCurrentDC}) {
     }
 
     return (
-        <div>
-            <h3>Navbar</h3>
-            <div className='post'>
+        <div className='box post'>
+            <div >
                 <input id='input-title' placeholder='title'></input>
                 <input id='input-desc' placeholder='desc'></input>
                 <button className='btn' onClick={handlePostClick}>post</button>
             </div>
-            
             <button className='btn' onClick={handleClick}>display all datacards</button>
+            
         </div>
     )
 }

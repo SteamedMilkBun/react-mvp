@@ -8,9 +8,9 @@ function App() {
   const [currentDC, setCurrentDC] = useState({})
 
   return (
-    <>
-      <h1>aMazin</h1>
-      <Navbar 
+    <div className='master'>
+      <h1>AMVPon -^</h1>
+      <Navbar
         currentDC={currentDC}
         setCurrentDC={setCurrentDC}
       />
@@ -18,7 +18,7 @@ function App() {
         currentDC={currentDC}
         setCurrentDC={setCurrentDC}
       />
-    </>
+    </div>
   )
 }
 
