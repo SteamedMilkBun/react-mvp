@@ -4,6 +4,7 @@
   padding: 2rem;
   text-align: center;
   background-color: black;
+  color: white;
 }
 
 .master {
@@ -26,7 +27,7 @@
 }
 
 .post {
-  background-color: darkslategrey;
+  background-color: #0b2969;
   color: white;
 }
 
