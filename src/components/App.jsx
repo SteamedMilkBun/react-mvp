@@ -9,7 +9,8 @@ function App() {
 
   return (
     <div className='master'>
-      <h1>AMVPon -^</h1>
+      <h1>AMVPon</h1>
+      <h1 id='orange'> --^</h1>
       <Navbar
         currentDC={currentDC}
         setCurrentDC={setCurrentDC}
