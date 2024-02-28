@@ -24,6 +24,11 @@
   align-items: center;
 }
 
+.post {
+  background-color: black;
+  color: white;
+}
+
 .dc {
   border-radius: .7em;
   border-style: solid;
