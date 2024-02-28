@@ -50,9 +50,9 @@
 
 .dc:hover {
   height: 35px;
-  width: 150px;
+  width: 66%;
   margin: .6em;
-  transform: rotate(-4deg) translateX(3em) translateY(-.5em);
+  transform: rotate(-3deg) translateX(3em) translateY(-.5em);
 }
 
 #orange {
