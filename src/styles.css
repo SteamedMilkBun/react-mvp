@@ -9,7 +9,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1em;
 }
 
 .box {
@@ -47,3 +46,7 @@
   color: orange;
 }
 
+h1 {
+  padding: 0;
+  margin: 0;
+}
