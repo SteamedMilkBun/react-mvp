@@ -71,7 +71,7 @@ function Display ({ currentDC, setCurrentDC }) {
 
     if (Object.keys(currentDC).length === 0) {
         return (
-            <div className='box'>
+            <div className='box display'>
                 <h3>Result of Get All</h3>
                 {data.map((element) => (
                     <Datacard
