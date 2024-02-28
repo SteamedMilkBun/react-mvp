@@ -32,7 +32,7 @@
 }
 
 .display {
-  background-color: grey;
+  background-color: lightgray;
   color: black;
 }
 
@@ -41,7 +41,7 @@
   border-style: solid;
   border-width: 1px;
   height: 30px;
-  width: 175px;
+  width: 80%;
   padding: .7em;
   transition: width 1s, height 1s, margin 1s, transform 1s;
   margin: .2em;
@@ -52,7 +52,7 @@
   height: 35px;
   width: 150px;
   margin: .6em;
-  transform: rotate(-7deg) translateX(4em) translateY(-.5em);
+  transform: rotate(-4deg) translateX(3em) translateY(-.5em);
 }
 
 #orange {
@@ -66,5 +66,5 @@ h1 {
 
 button {
   background-color: orange;
-  color: black1;
+  color: black;
 }
