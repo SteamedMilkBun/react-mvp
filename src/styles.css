@@ -45,6 +45,7 @@
   padding: .7em;
   transition: width 1s, height 1s, margin 1s, transform 1s;
   margin: .2em;
+  background-color: white;
 }
 
 .dc:hover {
